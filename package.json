@@ -1,0 +1,30 @@
+{
+  "name": "exempt",
+  "version": "0.0.0",
+  "description": "A better way to use Array.prototype.splice method.",
+  "main": "exempt.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/volkovasystems/exempt.git"
+  },
+  "keywords": [
+    "exempt",
+    "exclude",
+    "Array.prototype.splice",
+    "splicing",
+    "array-splicing",
+    "array-splice"
+  ],
+  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/volkovasystems/exempt/issues"
+  },
+  "homepage": "https://github.com/volkovasystems/exempt#readme",
+  "dependencies": {
+    "harden": "^0.2.0"
+  }
+}
