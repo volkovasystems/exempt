@@ -1,10 +1,14 @@
 {
   "name": "exempt",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A better way to use Array.prototype.splice method.",
   "main": "exempt.js",
+  "support": "exempt.support.js",
+  "deploy": "exempt.deploy.js",
+  "browser": "exempt.deploy.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel exempt.js --out-file exempt.support.js --source-maps && webpack --progress --display-modules",
+    "test": "mocha exempt-test.js"
   },
   "repository": {
     "type": "git",
@@ -25,6 +29,20 @@
   },
   "homepage": "https://github.com/volkovasystems/exempt#readme",
   "dependencies": {
-    "harden": "^0.2.0"
+    "babel-runtime": "^6.23.0",
+    "budge": "^0.19.0",
+    "deequal": "^0.3.0",
+    "depher": "^0.23.0",
+    "doubt": "^0.24.0",
+    "falzy": "^0.17.0",
+    "wichevr": "^0.7.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-latest": "^6.24.0",
+    "source-map-loader": "^0.2.1",
+    "webpack": "^2.3.2"
   }
 }

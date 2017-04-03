@@ -1,8 +1,12 @@
-/*:
+"use strict";
+
+/*;
 	@module-license:
 		The MIT License (MIT)
+		@mit-license
 
-		Copyright (c) 2014 Richeve Siodina Bebedor
+		Copyright (@c) 2017 Richeve Siodina Bebedor
+		@email: richeve.bebedor@gmail.com
 
 		Permission is hereby granted, free of charge, to any person obtaining a copy
 		of this software and associated documentation files (the "Software"), to deal
@@ -25,89 +29,80 @@
 
 	@module-configuration:
 		{
-			"packageName": "exempt",
-			"fileName": "exempt.js",
-			"moduleName": "exempt",
-			"authorName": "Richeve S. Bebedor",
-			"authorEMail": "richeve.bebedor@gmail.com",
-			"repository": "git@github.com:volkovasystems/exempt.git",
-			"testCase": "exempt-test.js",
-			"isGlobal": true
+			"package": "excursio",
+			"path": "excursio/excursio.js",
+			"file": "excursio.js",
+			"module": "excursio",
+			"author": "Richeve S. Bebedor",
+			"eMail": "richeve.bebedor@gmail.com",
+			"repository": "https://github.com/volkovasystems/excursio.git",
+			"global": true
 		}
 	@end-module-configuration
 
 	@module-documentation:
-		This lets us exempt the entity from the array
-			using the splice method while maintaining reference
-			to the original array.
-
-		You can use it like this:
-
-			exempt( myArray, "myData" );
-			//This will exempt "myData" from myArray.
-
-		You can also use it like this:
-
-			exempt.bind( myArray )( "myData" );
-			//This will bind myArray as the scope and exempt "myData" from myArray.
-
-		This will return the list.
+		A better way to use Array.prototype.splice method.
 	@end-module-documentation
+
+	@include:
+		{
+			"budge": "budge",
+			"depher": "depher",
+			"deequal": "deequal",
+			"doubt": "doubt",
+			"falzy": "falzy",
+			"wichevr": "wichevr"
+		}
+	@end-include
 */
-var exempt = function exempt( entity, list, exemptFunction ){
-	if( typeof list == "undefined" &&
-		Array.isArray( this ) )
-	{
-		list = this;
-	}
 
-	if( typeof list == "function" &&
-		typeof exemptFunction == "undefined" )
-	{
-		exemptFunction = list;
+const budge = require( "budge" );
+const depher = require( "depher" );
+const deequal = require( "deequal" );
+const doubt = require( "doubt" );
+const falzy = require( "falzy" );
+const wichevr = require( "wichevr" );
 
-	}
-
-	if( !exemptFunction ||
-		typeof exemptFunction != "function" )
-	{
-		exemptFunction = function exemptFunction( value, index, list, entity ){
-			return value === entity;
-		}
-	}
-
-	var iterate = function iterate( list, index ){
-		index = index || 0;
-		var listLength = list.length;
-
-		for( ; index < listLength; index++ ){
-			if( exemptFunction( list[ index ], index, list, entity ) ){
-				list.splice( index, 1 );
-
-				break;
+const exempt = function exempt( list, entity, exempter, index ){
+	/*;
+		@meta-configuration:
+			{
+				"list:required": Array
+				"entity:required": "*",
+				"exempter": "function",
+				"index": "number"
 			}
+		@end-meta-configuration
+	*/
 
-			if( ( index + 1 ) == listLength ){
-				return;
-			}
-		}
-
-		return iterate( list, index - 1 );
+	if( !doubt( list, ARRAY ) ){
+		throw new Error( "invalid list" );
 	}
 
-	iterate( list );
+	if( falzy( entity ) ){
+		return list;
+	}
+
+	exempter = wichevr( exempter, function exempter( element, entity, index ){
+		return deequal( element, entity );
+	} );
+
+	index = depher( budge( arguments, 2 ), NUMBER, 0 );
+
+	let length = list.length;
+	do{
+		let element = list[ index ];
+
+		if( exempter( element, entity, index++ ) ){
+			list.splice( ( index - 1 ), 1 );
+
+			exempt( list, entity, exempter, index );
+
+			break;
+		}
+	}while( index < length );
 
 	return list;
 };
 
-if( typeof module != "undefined" ){ 
-	module.exports = exempt; 
-}
-
-if( typeof global != "undefined" ){
-	harden
-		.bind( exempt )( "globalize", 
-			function globalize( ){
-				harden.bind( global )( "exempt", exempt );
-			} );
-}
+module.exports = exempt
