@@ -42,6 +42,10 @@
               
               	@module-documentation:
               		A better way to use Array.prototype.splice method.
+              
+              		The default exempter function does deep equal.
+              		Passing an index will start the procedure on that index of the list.
+              		A residue array may be used to collect spliced elements.
               	@end-module-documentation
               
               	@include:
@@ -50,8 +54,9 @@
               			"depher": "depher",
               			"deequal": "deequal",
               			"doubt": "doubt",
+              			"een": "een",
               			"falzy": "falzy",
-              			"wichevr": "wichevr"
+              			"harden": "harden"
               		}
               	@end-include
               */
@@ -60,20 +65,22 @@ var budge = require("budge");
 var depher = require("depher");
 var deequal = require("deequal");
 var doubt = require("doubt");
+var een = require("een");
 var falzy = require("falzy");
-var wichevr = require("wichevr");
+var harden = require("harden");
 
-var exempt = function exempt(list, entity, exempter, index) {
+var exempt = function exempt(list, entity, exempter, index, residue) {
 	/*;
-                                                             	@meta-configuration:
-                                                             		{
-                                                             			"list:required": Array
-                                                             			"entity:required": "*",
-                                                             			"exempter": "function",
-                                                             			"index": "number"
-                                                             		}
-                                                             	@end-meta-configuration
-                                                             */
+                                                                      	@meta-configuration:
+                                                                      		{
+                                                                      			"list:required": Array
+                                                                      			"entity:required": "*",
+                                                                      			"exempter": "function",
+                                                                      			"index": "number",
+                                                                      			"residue": Array
+                                                                      		}
+                                                                      	@end-meta-configuration
+                                                                      */
 
 	if (!doubt(list, ARRAY)) {
 		throw new Error("invalid list");
@@ -83,24 +90,40 @@ var exempt = function exempt(list, entity, exempter, index) {
 		return list;
 	}
 
-	exempter = wichevr(exempter, function exempter(element, entity, index) {
+	var parameter = budge(arguments, 2);
+	exempter = depher(parameter, FUNCTION, function exempter(element, entity, index) {
 		return deequal(element, entity);
 	});
-
-	index = depher(budge(arguments, 2), NUMBER, 0);
+	index = depher(parameter, NUMBER, 0);
+	residue = depher(parameter, Array, []);
 
 	var length = list.length;
 	do {
 		var element = list[index];
 
 		if (exempter(element, entity, index++)) {
-			list.splice(index - 1, 1);
+			list.splice(index - 1, 1).forEach(function (element) {
+				if (!een(residue, element)) {
+					residue.push(element);
+				}
+			});
 
-			exempt(list, entity, exempter, index);
+			exempt(list, entity, exempter, index, residue);
 
 			break;
 		}
 	} while (index < length);
+
+	if (falzy(list.residue)) {
+		harden("residue", residue, list);
+
+	} else {
+		residue.forEach(function (element) {
+			if (!een(list.residue, element)) {
+				list.residue.push(element);
+			}
+		});
+	}
 
 	return list;
 };

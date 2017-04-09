@@ -4,8 +4,9 @@ budge \
 depher \
 deequal \
 doubt \
+een \
 falzy \
-wichevr \
+harden \
 --save && \
 yarn add \
 babel-cli \
@@ -20,7 +21,8 @@ budge \
 depher \
 deequal \
 doubt \
+een \
 falzy \
-wichevr \
+harden \
 --save \
 --force-latest
