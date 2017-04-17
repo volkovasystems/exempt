@@ -56,7 +56,8 @@
 			"doubt": "doubt",
 			"een": "een",
 			"falzy": "falzy",
-			"harden": "harden"
+			"harden": "harden",
+			"nsrt": "nsrt"
 		}
 	@end-include
 */
@@ -68,6 +69,7 @@ const doubt = require( "doubt" );
 const een = require( "een" );
 const falzy = require( "falzy" );
 const harden = require( "harden" );
+const nsrt = require( "nsrt" );
 
 const exempt = function exempt( list, entity, exempter, index, residue ){
 	/*;
@@ -102,11 +104,7 @@ const exempt = function exempt( list, entity, exempter, index, residue ){
 		let element = list[ index ];
 
 		if( exempter( element, entity, index++ ) ){
-			list.splice( ( index - 1 ), 1 ).forEach( ( element ) => {
-				if( !een( residue, element ) ){
-					residue.push( element );
-				}
-			} );
+			list.splice( ( index - 1 ), 1 ).forEach( ( element ) => nsrt( residue, element ) );
 
 			exempt( list, entity, exempter, index, residue );
 
@@ -118,11 +116,7 @@ const exempt = function exempt( list, entity, exempter, index, residue ){
 		harden( "residue", residue, list );
 
 	}else{
-		residue.forEach( ( element ) => {
-			if( !een( list.residue, element ) ){
-				list.residue.push( element );
-			}
-		} );
+		residue.forEach( ( element ) => nsrt( list.residue, element ) );
 	}
 
 	return list;

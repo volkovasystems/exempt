@@ -7,6 +7,7 @@ doubt \
 een \
 falzy \
 harden \
+nsrt \
 --save && \
 yarn add \
 babel-cli \
@@ -24,5 +25,6 @@ doubt \
 een \
 falzy \
 harden \
+nsrt \
 --save \
 --force-latest

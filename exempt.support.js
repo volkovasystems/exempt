@@ -56,7 +56,8 @@
               			"doubt": "doubt",
               			"een": "een",
               			"falzy": "falzy",
-              			"harden": "harden"
+              			"harden": "harden",
+              			"nsrt": "nsrt"
               		}
               	@end-include
               */
@@ -68,6 +69,7 @@ var doubt = require("doubt");
 var een = require("een");
 var falzy = require("falzy");
 var harden = require("harden");
+var nsrt = require("nsrt");
 
 var exempt = function exempt(list, entity, exempter, index, residue) {
 	/*;
@@ -102,11 +104,7 @@ var exempt = function exempt(list, entity, exempter, index, residue) {
 		var element = list[index];
 
 		if (exempter(element, entity, index++)) {
-			list.splice(index - 1, 1).forEach(function (element) {
-				if (!een(residue, element)) {
-					residue.push(element);
-				}
-			});
+			list.splice(index - 1, 1).forEach(function (element) {return nsrt(residue, element);});
 
 			exempt(list, entity, exempter, index, residue);
 
@@ -118,11 +116,7 @@ var exempt = function exempt(list, entity, exempter, index, residue) {
 		harden("residue", residue, list);
 
 	} else {
-		residue.forEach(function (element) {
-			if (!een(list.residue, element)) {
-				list.residue.push(element);
-			}
-		});
+		residue.forEach(function (element) {return nsrt(list.residue, element);});
 	}
 
 	return list;
