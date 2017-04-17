@@ -103,13 +103,17 @@ var exempt = function exempt(list, entity, exempter, index, residue) {
 	do {
 		var element = list[index];
 
-		if (exempter(element, entity, index++)) {
-			list.splice(index - 1, 1).forEach(function (element) {return nsrt(residue, element);});
+		if (exempter(element, entity, index)) {
+			list.splice(index, 1).forEach(function (element) {return nsrt(residue, element);});
 
-			exempt(list, entity, exempter, index, residue);
+			exempt(list, entity, exempter, index++, residue);
 
 			break;
+
+		} else {
+			index++;
 		}
+
 	} while (index < length);
 
 	if (falzy(list.residue)) {

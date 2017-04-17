@@ -103,13 +103,17 @@ const exempt = function exempt( list, entity, exempter, index, residue ){
 	do{
 		let element = list[ index ];
 
-		if( exempter( element, entity, index++ ) ){
-			list.splice( ( index - 1 ), 1 ).forEach( ( element ) => nsrt( residue, element ) );
+		if( exempter( element, entity, index ) ){
+			list.splice( index, 1 ).forEach( ( element ) => nsrt( residue, element ) );
 
-			exempt( list, entity, exempter, index, residue );
+			exempt( list, entity, exempter, index++, residue );
 
 			break;
+
+		}else{
+			index++
 		}
+		
 	}while( index < length );
 
 	if( falzy( list.residue ) ){
