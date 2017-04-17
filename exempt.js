@@ -111,9 +111,9 @@ const exempt = function exempt( list, entity, exempter, index, residue ){
 			break;
 
 		}else{
-			index++
+			index++;
 		}
-		
+
 	}while( index < length );
 
 	if( falzy( list.residue ) ){
