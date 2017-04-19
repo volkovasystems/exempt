@@ -102,7 +102,7 @@ var exempt = function exempt(list, entity, exempter, index, residue) {
 	residue = depher(parameter, Array, []);
 
 	var length = list.length;
-	do {
+	while (index < length) {
 		var element = list[index];
 
 		if (exempter(element, entity, index)) {
@@ -115,8 +115,7 @@ var exempt = function exempt(list, entity, exempter, index, residue) {
 		} else {
 			index++;
 		}
-
-	} while (index < length);
+	}
 
 	if (falzy(list.residue)) {
 		harden("residue", residue, list);
