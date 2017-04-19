@@ -46,6 +46,8 @@
 		The default exempter function does deep equal.
 		Passing an index will start the procedure on that index of the list.
 		A residue array may be used to collect spliced elements.
+
+		If entity and exempter is not given it will not do anything.
 	@end-module-documentation
 
 	@include:
@@ -88,7 +90,7 @@ const exempt = function exempt( list, entity, exempter, index, residue ){
 		throw new Error( "invalid list" );
 	}
 
-	if( falzy( entity ) ){
+	if( falzy( entity ) && falzy( exempter ) ){
 		return list;
 	}
 
