@@ -1,8 +1,10 @@
-
+const assert = require( "assert" );
 const exempt = require( "./exempt.js" );
 
 let list = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ];
-console.log( exempt( list, 3 ) === list, list );
+assert.deepEqual( exempt( list, 3 ) === list, true, "should be true" );
 
 let residue = [ ];
-console.log( exempt( list, 5, residue ), residue );
+assert.deepEqual( exempt( list, 5, residue ), [ 1, 2, 4, 6, 7, 8, 9 ] );
+
+console.log( "ok" );
