@@ -1,6 +1,5 @@
 yarn add \
 babel-runtime \
-budge \
 depher \
 deequal \
 doubt \
@@ -8,6 +7,7 @@ een \
 falzy \
 harden \
 nsrt \
+shft \
 --save && \
 yarn add \
 babel-cli \
@@ -18,7 +18,6 @@ source-map-loader \
 webpack \
 --dev && \
 bower install \
-budge \
 depher \
 deequal \
 doubt \
@@ -26,5 +25,6 @@ een \
 falzy \
 harden \
 nsrt \
+shft \
 --save \
 --force-latest
