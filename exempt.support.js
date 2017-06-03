@@ -55,19 +55,18 @@
               
               	@include:
               		{
-              			"budge": "budge",
               			"depher": "depher",
               			"deequal": "deequal",
               			"doubt": "doubt",
               			"een": "een",
               			"falzy": "falzy",
               			"harden": "harden",
-              			"nsrt": "nsrt"
+              			"nsrt": "nsrt",
+              			"shft": "shft"
               		}
               	@end-include
               */
 
-var budge = require("budge");
 var depher = require("depher");
 var deequal = require("deequal");
 var doubt = require("doubt");
@@ -75,6 +74,7 @@ var een = require("een");
 var falzy = require("falzy");
 var harden = require("harden");
 var nsrt = require("nsrt");
+var shft = require("shft");
 
 var exempt = function exempt(list, entity, exempter, index, residue) {
 	/*;
@@ -97,7 +97,7 @@ var exempt = function exempt(list, entity, exempter, index, residue) {
 		return list;
 	}
 
-	var parameter = budge(arguments, 2);
+	var parameter = shft(arguments, 2);
 	exempter = depher(parameter, FUNCTION, function exempter(element, entity, index) {
 		return deequal(element, entity);
 	});
