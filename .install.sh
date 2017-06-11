@@ -1,11 +1,11 @@
 yarn add \
 babel-runtime \
 depher \
-deequal \
 doubt \
 een \
 falzy \
 harden \
+lqual \
 nsrt \
 shft \
 --save && \
@@ -19,11 +19,11 @@ webpack \
 --dev && \
 bower install \
 depher \
-deequal \
 doubt \
 een \
 falzy \
 harden \
+lqual \
 nsrt \
 shft \
 --save \

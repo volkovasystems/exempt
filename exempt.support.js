@@ -46,7 +46,7 @@
               	@module-documentation:
               		A better way to use Array.prototype.splice method.
               
-              		The default exempter function does deep equal.
+              		The default exempter function does first level equal.
               		Passing an index will start the procedure on that index of the list.
               		A residue array may be used to collect spliced elements.
               
@@ -56,11 +56,11 @@
               	@include:
               		{
               			"depher": "depher",
-              			"deequal": "deequal",
               			"doubt": "doubt",
               			"een": "een",
               			"falzy": "falzy",
               			"harden": "harden",
+              			"lqual": "lqual",
               			"nsrt": "nsrt",
               			"shft": "shft"
               		}
@@ -68,11 +68,11 @@
               */
 
 var depher = require("depher");
-var deequal = require("deequal");
 var doubt = require("doubt");
 var een = require("een");
 var falzy = require("falzy");
 var harden = require("harden");
+var lqual = require("lqual");
 var nsrt = require("nsrt");
 var shft = require("shft");
 
@@ -99,7 +99,7 @@ var exempt = function exempt(list, entity, exempter, index, residue) {
 
 	var parameter = shft(arguments, 2);
 	exempter = depher(parameter, FUNCTION, function exempter(element, entity, index) {
-		return deequal(element, entity);
+		return lqual(element, entity);
 	});
 	index = depher(parameter, NUMBER, 0);
 	residue = depher(parameter, Array, []);
