@@ -1,8 +1,32 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<script
-			type="application/javascript"
-			src="./exempt.deploy.js">
-		</script>
+		<title>exempt unit test</title>
+
+		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+
+		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
+
+		<script type="application/javascript" src="./exempt.deploy.js"></script>
 	</head>
+
+	<body>
+		<div id="qunit"></div>
+
+		<div id="qunit-fixture"></div>
+
+		<script type="application/javascript">
+			QUnit.test( "exempt unit test", function( assert ) {
+
+				let list = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ];
+				assert.deepEqual( exempt( list, 3 ) === list, true, "should be true" );
+
+				let residue = [ ];
+				assert.deepEqual( exempt( list, 5, residue ), [ 1, 2, 4, 6, 7, 8, 9 ], "should be equal" );
+
+				assert.deepEqual( exempt( [ 1, 4, 3, 2 ], 2 ), [ 1, 4, 3 ], "should be equal" );
+
+			} );
+		</script>
+	</body>
 </html>

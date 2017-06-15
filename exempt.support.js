@@ -34,10 +34,11 @@
               			"file": "excursio.js",
               			"module": "excursio",
               			"author": "Richeve S. Bebedor",
-              			"contributors": [
-              				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
-              			],
               			"eMail": "richeve.bebedor@gmail.com",
+              			"contributors": [
+              				"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+              				"Vinse Vinalon"
+              			],
               			"repository": "https://github.com/volkovasystems/excursio.git",
               			"global": true
               		}
