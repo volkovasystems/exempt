@@ -1,13 +1,13 @@
 {
   "name": "exempt",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "main": "exempt.deploy.js",
   "support": "exempt.support.js",
   "homepage": "https://github.com/volkovasystems/exempt",
   "authors": [
     "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
     "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-    "Vinse Vinalon"
+    "Vinse Vinalon <vinsevinalon@gmail.com>"
   ],
   "description": "A better way to use Array.prototype.splice method.",
   "moduleType": [
@@ -30,7 +30,7 @@
     "tests"
   ],
   "dependencies": {
-    "depher": "^0.34.0",
+    "depher": "^0.35.0",
     "doubt": "^0.27.0",
     "een": "^0.19.0",
     "falzy": "^0.20.0",
