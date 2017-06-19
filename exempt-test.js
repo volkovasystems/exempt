@@ -1,6 +1,8 @@
 const assert = require( "assert" );
 const exempt = require( "./exempt.js" );
 
+assert.deepEqual( exempt( [ 1, 2, 3, 4, 5 ], 2 ), [ 1, 3, 4, 5 ], "should be deeply equal" );
+
 let list = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ];
 assert.deepEqual( exempt( list, 3 ) === list, true, "should be true" );
 
