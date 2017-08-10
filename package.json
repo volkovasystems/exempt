@@ -1,54 +1,57 @@
 {
-  "name": "exempt",
-  "version": "0.16.0",
-  "description": "A better way to use Array.prototype.splice method.",
-  "main": "exempt.js",
-  "support": "exempt.support.js",
-  "deploy": "exempt.deploy.js",
-  "browser": "exempt.deploy.js",
-  "scripts": {
-    "build": "babel exempt.js --out-file exempt.support.js --source-maps && webpack --progress --display-modules",
-    "test": "mocha exempt-test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/volkovasystems/exempt.git"
-  },
-  "keywords": [
-    "exempt",
-    "exclude",
-    "Array.prototype.splice",
-    "splicing",
-    "array-splicing",
-    "array-splice"
-  ],
-  "author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
-  "contributors": [
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-    "Vinse Vinalon <vinsevinalon@gmail.com>"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/volkovasystems/exempt/issues"
-  },
-  "homepage": "https://github.com/volkovasystems/exempt#readme",
-  "dependencies": {
-    "babel-runtime": "^6.23.0",
-    "depher": "^0.36.0",
-    "doubt": "^0.30.0",
-    "een": "^0.21.0",
-    "falzy": "^0.20.0",
-    "harden": "^0.22.0",
-    "lqual": "^0.3.0",
-    "nsrt": "^0.11.0",
-    "shft": "^0.4.0"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-latest": "^6.24.1",
-    "source-map-loader": "^0.2.1",
-    "webpack": "^3.2.0"
-  }
+	"name": "exempt",
+	"version": "0.17.0",
+	"description": "A better way to use Array.prototype.splice method.",
+	"main": "exempt.js",
+	"support": "exempt.support.js",
+	"deploy": "exempt.deploy.js",
+	"browser": "exempt.deploy.js",
+	"scripts": {
+		"pristine": "rsetmod clean && flxc execute ./.install.sh",
+		"clear": "rsetmod clean --clear",
+		"build": "babel exempt.js --out-file exempt.support.js --source-maps && webpack --progress --display-modules",
+		"pretest": "npm run clear && npm run build",
+		"test": "node exempt-test.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/volkovasystems/exempt.git"
+	},
+	"keywords": [
+		"exempt",
+		"exclude",
+		"Array.prototype.splice",
+		"splicing",
+		"array-splicing",
+		"array-splice"
+	],
+	"author": "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+	"contributors": [
+		"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
+		"Vinse Vinalon <vinsevinalon@gmail.com>"
+	],
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/volkovasystems/exempt/issues"
+	},
+	"homepage": "https://github.com/volkovasystems/exempt#readme",
+	"dependencies": {
+		"babel-runtime": "^6.25.0",
+		"depher": "^0.38.0",
+		"doubt": "^0.34.0",
+		"een": "^0.23.0",
+		"falzy": "^0.23.0",
+		"harden": "^0.23.0",
+		"lqual": "^0.4.0",
+		"nsrt": "^0.12.0",
+		"shft": "^0.5.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.24.1",
+		"babel-core": "^6.25.0",
+		"babel-plugin-transform-runtime": "^6.23.0",
+		"babel-preset-latest": "^6.24.1",
+		"source-map-loader": "^0.2.1",
+		"webpack": "^3.5.2"
+	}
 }
