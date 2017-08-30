@@ -1,34 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>exempt unit test</title>
+		<meta charset="utf-8">
 
-		<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.3.2.css">
+		<title>test:exempt</title>
 
-		<script type="application/javascript" src="https://code.jquery.com/qunit/qunit-2.3.2.js"></script>
-
-		<script type="application/javascript" src="./exempt.deploy.js"></script>
+		<link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css"/>
 	</head>
 
 	<body>
-		<div id="qunit"></div>
+		<div id="mocha"></div>
 
-		<div id="qunit-fixture"></div>
+		<script type="application/javascript" src="https://unpkg.com/mocha/mocha.js"></script>
 
 		<script type="application/javascript">
-			QUnit.test( "exempt unit test", function( assert ) {
+			mocha.setup( "bdd" );
+		</script>
 
-				assert.deepEqual( exempt( [ 1, 2, 3, 4, 5 ], 2 ), [ 1, 3, 4, 5 ], "should be equal to [ 1, 3, 4, 5 ]" );
+		<script type="application/javascript" src="./test.deploy.js"></script>
 
-				let list = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ];
-				assert.deepEqual( exempt( list, 3 ) === list, true, "should be equal to true" );
-
-				let residue = [ ];
-				assert.deepEqual( exempt( list, 5, residue ), [ 1, 2, 4, 6, 7, 8, 9 ], "should be equal to [ 1, 2, 4, 6, 7, 8, 9 ]" );
-
-				assert.deepEqual( exempt( [ 1, 4, 3, 2 ], 2 ), [ 1, 4, 3 ], "should be equal to [ 1, 4, 3 ]" );
-
-			} );
+		<script type="application/javascript">
+			mocha.run( );
 		</script>
 	</body>
 </html>

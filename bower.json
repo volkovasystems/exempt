@@ -1,42 +1,31 @@
 {
-  "name": "exempt",
-  "version": "0.17.0",
-  "main": "exempt.deploy.js",
-  "support": "exempt.support.js",
-  "homepage": "https://github.com/volkovasystems/exempt",
-  "authors": [
-    "Richeve S. Bebedor <richeve.bebedor@gmail.com>",
-    "John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>",
-    "Vinse Vinalon <vinsevinalon@gmail.com>"
-  ],
-  "description": "A better way to use Array.prototype.splice method.",
-  "moduleType": [
-    "globals",
-    "node"
-  ],
-  "keywords": [
-    "exempt",
-    "exclude",
-    "Array.prototype.splice",
-    "array-splicing",
-    "array-splice"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "depher": "^0.38.0",
-    "doubt": "^0.34.0",
-    "een": "^0.23.0",
-    "falzy": "^0.23.0",
-    "harden": "^0.23.0",
-    "lqual": "^0.4.0",
-    "nsrt": "^0.12.0",
-    "shft": "^0.5.0"
-  }
+	"name": "exempt",
+	"version": "0.12.0",
+	"main": "exempt.deploy.js",
+	"support": "exempt.support.js",
+	"homepage": "https://github.com/volkovasystems/exempt",
+	"authors": [
+		"Richeve S. Bebedor <richeve.bebedor@gmail.com>",
+		"John Lenon Maghanoy <johnlenonmaghanoy@gmail.com>"
+	],
+	"description": "A better way to use Array.prototype.splice method.",
+	"moduleType": [
+		"globals",
+		"node"
+	],
+	"keywords": [
+		"exempt",
+		"exclude",
+		"Array.prototype.splice",
+		"array-splicing",
+		"array-splice"
+	],
+	"license": "MIT",
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	]
 }
