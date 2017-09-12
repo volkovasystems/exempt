@@ -51,7 +51,7 @@
 	@end-include
 */
 
-const assert = require( "should" );
+const assert = require( "should/as-function" );
 
 //: @server:
 const exempt = require( "./exempt.js" );
@@ -67,25 +67,122 @@ const path = require( "path" );
 
 
 //: @server:
-
 describe( "exempt", ( ) => {
 
-} );
+	describe( "`exempt( [ 1, 2, 3, 4, 5 ], 2 )`", ( ) => {
+		it( "should be equal to [ 1, 3, 4, 5 ]", ( ) => {
+			assert.deepEqual( exempt( [ 1, 2, 3, 4, 5 ], 2 ), [ 1, 3, 4, 5 ] );
+		} );
+	} );
 
+	describe( "`exempt( [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ], 3 )`", ( ) => {
+		it( "should be equal to [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ]", ( ) => {
+			let list = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ];
+
+			assert.deepEqual( exempt( list, 3 ), [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ] );
+		} );
+	} );
+
+	describe( "`exempt( [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ], 5, [ ] )`", ( ) => {
+		it( "should be equal to [ 1, 2, 4, 6, 7, 8, 9 ]", ( ) => {
+			let list = [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ];
+			let residue = [ ];
+
+			assert.deepEqual( exempt( list, 5, residue ), [ 1, 2, 4, 6, 7, 8, 9 ] );
+		} );
+	} );
+
+} );
 //: @end-server
 
 
 //: @client:
-
 describe( "exempt", ( ) => {
-} );
 
+	describe( "`exempt( [ 1, 2, 3, 4, 5 ], 2 )`", ( ) => {
+		it( "should be equal to [ 1, 3, 4, 5 ]", ( ) => {
+			assert.deepEqual( exempt( [ 1, 2, 3, 4, 5 ], 2 ), [ 1, 3, 4, 5 ] );
+		} );
+	} );
+
+	describe( "`exempt( [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ], 3 )`", ( ) => {
+		it( "should be equal to [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ]", ( ) => {
+			let list = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ];
+
+			assert.deepEqual( exempt( list, 3 ), [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ] );
+		} );
+	} );
+
+	describe( "`exempt( [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ], 5, [ ] )`", ( ) => {
+		it( "should be equal to [ 1, 2, 4, 6, 7, 8, 9 ]", ( ) => {
+			let list = [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ];
+			let residue = [ ];
+
+			assert.deepEqual( exempt( list, 5, residue ), [ 1, 2, 4, 6, 7, 8, 9 ] );
+		} );
+	} );
+
+} );
 //: @end-client
 
 
 //: @bridge:
-
 describe( "exempt", ( ) => {
-} );
 
+	let bridgeURL = `file://${ path.resolve( __dirname, "bridge.html" ) }`;
+
+	describe( "`exempt( [ 1, 2, 3, 4, 5 ], 2 )`", ( ) => {
+		it( "should be equal to [ 1, 3, 4, 5 ]", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					return JSON.stringify( exempt( [ 1, 2, 3, 4, 5 ], 2 ) );
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.deepEqual( JSON.parse( result ), [ 1, 3, 4, 5 ] );
+		} );
+	} );
+
+	describe( "`exempt( [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ], 3 )`", ( ) => {
+		it( "should be equal to [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ]", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					let list = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ];
+
+					return JSON.stringify( exempt( list, 3 ) );
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.deepEqual( JSON.parse( result ), [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ] );
+		} );
+	} );
+
+	describe( "`exempt( [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ], 5, [ ] )`", ( ) => {
+		it( "should be equal to [ 1, 2, 4, 6, 7, 8, 9 ]", ( ) => {
+			//: @ignore:
+			let result = browser.url( bridgeURL ).execute(
+
+				function( ){
+					let list = [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ];
+					let residue = [ ];
+
+					return JSON.stringify( exempt( list, 5, residue ) );
+				}
+
+			).value;
+			//: @end-ignore
+
+			assert.deepEqual( JSON.parse( result ), [ 1, 2, 4, 6, 7, 8, 9 ] );
+		} );
+	} );
+
+} );
 //: @end-bridge
