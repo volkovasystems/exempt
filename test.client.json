@@ -1,0 +1,148 @@
+{
+	"state": {
+		"passed": 3,
+		"failed": 0,
+		"skipped": 0
+	},
+	"start": "2017-09-12T06:06:28.682Z",
+	"end": "2017-09-12T06:07:06.460Z",
+	"capabilities": {
+		"browserName": "chrome",
+		"chromeOptions": {
+			"args": [
+				"disable-gpu",
+				"headless"
+			]
+		},
+		"proxy": null
+	},
+	"host": "127.0.0.1",
+	"port": 4444,
+	"baseUrl": "http://localhost",
+	"framework": "mocha",
+	"mochaOpts": {
+		"timeout": 10000,
+		"ui": "bdd"
+	},
+	"suites": [
+		{
+			"name": "exempt",
+			"duration": 0,
+			"start": "2017-09-12T06:07:05.975Z",
+			"tests": [],
+			"hooks": []
+		},
+		{
+			"name": "exempt",
+			"duration": 304,
+			"start": "2017-09-12T06:07:05.976Z",
+			"end": "2017-09-12T06:07:06.280Z",
+			"tests": [],
+			"hooks": [
+				{
+					"start": "2017-09-12T06:07:05.977Z",
+					"end": "2017-09-12T06:07:05.978Z",
+					"duration": 1,
+					"title": "\"before each\" hook",
+					"associatedSuite": "exempt",
+					"associatedTest": "should be equal to [ 1, 3, 4, 5 ]"
+				},
+				{
+					"start": "2017-09-12T06:07:06.152Z",
+					"end": "2017-09-12T06:07:06.152Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "exempt",
+					"associatedTest": "should be equal to [ 1, 3, 4, 5 ]"
+				},
+				{
+					"start": "2017-09-12T06:07:06.153Z",
+					"end": "2017-09-12T06:07:06.153Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "exempt",
+					"associatedTest": "should be equal to [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ]"
+				},
+				{
+					"start": "2017-09-12T06:07:06.212Z",
+					"end": "2017-09-12T06:07:06.213Z",
+					"duration": 1,
+					"title": "\"after each\" hook",
+					"associatedSuite": "exempt",
+					"associatedTest": "should be equal to [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ]"
+				},
+				{
+					"start": "2017-09-12T06:07:06.213Z",
+					"end": "2017-09-12T06:07:06.213Z",
+					"duration": 0,
+					"title": "\"before each\" hook",
+					"associatedSuite": "exempt",
+					"associatedTest": "should be equal to [ 1, 2, 4, 6, 7, 8, 9 ]"
+				},
+				{
+					"start": "2017-09-12T06:07:06.279Z",
+					"end": "2017-09-12T06:07:06.279Z",
+					"duration": 0,
+					"title": "\"after each\" hook",
+					"associatedSuite": "exempt",
+					"associatedTest": "should be equal to [ 1, 2, 4, 6, 7, 8, 9 ]"
+				},
+				{
+					"start": "2017-09-12T06:07:06.280Z",
+					"end": "2017-09-12T06:07:06.280Z",
+					"duration": 0,
+					"title": "\"after all\" hook",
+					"associatedSuite": "exempt"
+				}
+			]
+		},
+		{
+			"name": "`exempt( [ 1, 2, 3, 4, 5 ], 2 )`",
+			"duration": 177,
+			"start": "2017-09-12T06:07:05.976Z",
+			"end": "2017-09-12T06:07:06.153Z",
+			"tests": [
+				{
+					"name": "should be equal to [ 1, 3, 4, 5 ]",
+					"start": "2017-09-12T06:07:05.977Z",
+					"end": "2017-09-12T06:07:06.152Z",
+					"duration": 175,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`exempt( [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 5 ], 3 )`",
+			"duration": 60,
+			"start": "2017-09-12T06:07:06.153Z",
+			"end": "2017-09-12T06:07:06.213Z",
+			"tests": [
+				{
+					"name": "should be equal to [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ]",
+					"start": "2017-09-12T06:07:06.153Z",
+					"end": "2017-09-12T06:07:06.212Z",
+					"duration": 59,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		},
+		{
+			"name": "`exempt( [ 1, 2, 4, 5, 6, 7, 8, 9, 5 ], 5, [ ] )`",
+			"duration": 67,
+			"start": "2017-09-12T06:07:06.213Z",
+			"end": "2017-09-12T06:07:06.280Z",
+			"tests": [
+				{
+					"name": "should be equal to [ 1, 2, 4, 6, 7, 8, 9 ]",
+					"start": "2017-09-12T06:07:06.213Z",
+					"end": "2017-09-12T06:07:06.279Z",
+					"duration": 66,
+					"state": "pass"
+				}
+			],
+			"hooks": []
+		}
+	]
+}
